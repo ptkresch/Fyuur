@@ -98,6 +98,10 @@ def venues():
       "id": 3,
       "name": "Park Square Live Music & Coffee",
       "num_upcoming_shows": 1,
+    }, {
+      "id": 4,
+      "name": "The Starry Plough",
+      "num_upcoming_shows": 0,
     }]
   }, {
     "city": "New York",
@@ -206,7 +210,30 @@ def show_venue(venue_id):
     "past_shows_count": 1,
     "upcoming_shows_count": 1,
   }
-  data = list(filter(lambda d: d['id'] == venue_id, [data1, data2, data3]))[0]
+  data4 = {
+    "id": 4,
+    "name": "The Starry Plough",
+    "genres": ["Irish Folk", "Funk", "Rock n Roll", "Folk"],
+    "address": "3101 Shattuck Ave",
+    "city": "Berkeley",
+    "state": "CA",
+    "phone": "510-841-0188",
+    "website": "https://www.thestarryplough.com/",
+    "facebook_link": "https://www.facebook.com/StarryPlough/",
+    "seeking_talent": True,
+    "seeking_description": "WANT TO PERFORM AT THE STARRY PLOUGH? Email booking@thestarryplough.com for more information, thanks!",
+    "image_link": "https://static.spacecrafted.com/a12d940f84614181be42ddc19598bd95/i/c94c9290c7c64643a7c287efcd6bc2e3/1/5feFb8zhrk/StarryPlough-Logo_v3DarkWEB.png?dpr=3",
+    "past_shows": [{
+      "artist_id": 7,
+      "artist_name": "Unreal Band",
+      "artist_image_link": "https://scontent-lax3-2.xx.fbcdn.net/v/t31.0-8/23116696_10155205137607903_4535906375247856883_o.jpg?_nc_cat=111&ccb=2&_nc_sid=730e14&_nc_ohc=9zA80lYwH1sAX82lVZm&_nc_ht=scontent-lax3-2.xx&oh=6404fac982989ecf80d1b9763b75f345&oe=603DF641",
+      "start_time": "2019-06-15T23:00:00.000Z"
+    }],
+    "upcoming_shows": [],
+    "past_shows_count": 1,
+    "upcoming_shows_count": 0,
+  }
+  data = list(filter(lambda d: d['id'] == venue_id, [data1, data2, data3, data4]))[0]
   return render_template('pages/show_venue.html', venue=data)
 
 #  Create Venue
@@ -252,6 +279,9 @@ def artists():
   }, {
     "id": 6,
     "name": "The Wild Sax Band",
+  }, {
+    "id": 7,
+    "name": "The Unreal Band",
   }]
   return render_template('pages/artists.html', artists=data)
 
@@ -345,7 +375,27 @@ def show_artist(artist_id):
     "past_shows_count": 0,
     "upcoming_shows_count": 3,
   }
-  data = list(filter(lambda d: d['id'] == artist_id, [data1, data2, data3]))[0]
+  data4 = {
+  "id": 7,
+  "name": "The Unreal Band",
+  "genres": ["Rock n Roll"],
+  "city": "Berkeley",
+  "state": "CA",
+  "phone": "",
+  "facebook_link": "https://www.facebook.com/The-Unreal-Band-50756707902/",
+  "seeking_venue": False,
+  "image_link": "https://scontent-lax3-2.xx.fbcdn.net/v/t1.0-9/1927586_50757427902_2963_n.jpg?_nc_cat=106&ccb=2&_nc_sid=174925&_nc_ohc=dEp8j8pxK-AAX-mauX9&_nc_ht=scontent-lax3-2.xx&oh=999ac03bfcf122a2ea7b6b67c7eb1ff1&oe=603E719E",
+  "past_shows": [{
+      "venue_id": 4,
+      "venue_name": "The Starry Plough",
+      "venue_image_link": "https://scontent-lax3-2.xx.fbcdn.net/v/t31.0-8/23116696_10155205137607903_4535906375247856883_o.jpg?_nc_cat=111&ccb=2&_nc_sid=730e14&_nc_ohc=9zA80lYwH1sAX82lVZm&_nc_ht=scontent-lax3-2.xx&oh=6404fac982989ecf80d1b9763b75f345&oe=603DF641",
+      "start_time": "2017-11-04T20:00:00.000Z"
+  }],
+  "upcoming_shows": [],
+  "past_shows_count": 1,
+  "upcoming_shows_count": 0,
+  }
+  data = list(filter(lambda d: d['id'] == artist_id, [data1, data2, data3, data4]))[0]
   return render_template('pages/show_artist.html', artist=data)
 
 #  Update
